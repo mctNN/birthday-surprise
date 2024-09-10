@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import FormComponent from './FormComponent';
+import CakeComponent from './CakeComponent';
+import Header from './Header'; // Kaldırıldı
+import Footer from './Footer'; // Kaldırıldı
 
 function App() {
+  const [showCake, setShowCake] = useState(false);
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleFormSubmit = (name, message) => {
+    setName(name);
+    setMessage(message);
+    setShowCake(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!showCake ? (
+        <>
+          <Header /> {/* Eklendi */}
+          <FormComponent onSubmit={handleFormSubmit} />
+          <Footer /> {/* Eklendi */}
+        </>
+      ) : (
+        <CakeComponent name={name} message={message} />
+      )}
     </div>
   );
 }

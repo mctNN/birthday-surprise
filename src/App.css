@@ -1,38 +1,202 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Genel sayfa stili */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+h2, h3 {
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Güncellendi */
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form:hover {
+  transform: scale(1.05);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #555;
+  width: 100%;
+  text-align: left;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff6b6b;
+}
+
+button {
+  background-color: #ff6b6b;
   color: white;
+  padding: 12px 24px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block; /* Eklendi */
+  margin: 20px auto 0; /* Güncellendi */
 }
 
-.App-link {
+button:hover {
+  background-color: #ff4757;
+  transform: translateY(-2px);
+}
+
+/* Pasta ve mum tasarımı */
+.cake-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.cake {
+  width: 240px;
+  height: 160px;
+  background-color: #ffcccb;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cake::before {
+  content: '';
+  display: block;
+  width: 260px;
+  height: 40px;
+  background-color: #f67280;
+  border-radius: 12px;
+  position: absolute;
+  top: -40px;
+  left: -10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.candle {
+  width: 12px;
+  height: 40px;
+  background-color: #ffe066;
+  border-radius: 6px;
+  position: absolute;
+  top: -40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.candle:nth-child(1) { left: 50px; }
+.candle:nth-child(2) { left: 110px; }
+.candle:nth-child(3) { left: 170px; }
+
+.flame {
+  width: 12px;
+  height: 16px;
+  background-color: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: -16px;
+  left: 0;
+  animation: flicker 1.5s infinite;
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.6);
+}
+
+@keyframes flicker {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.candles-blown-out .flame {
+  display: none;
+}
+
+/* Mesaj bölümü */
+.message {
+  margin-top: 30px;
+  font-size: 1.5em;
+  color: #ff4757;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Pasta ile mum üfleme butonu arasında boşluk */
+.cake-container button {
+  margin-top: 30px;
+}
+
+/* Daha fazla boşluk ekleyerek hizalamaları ayarladık */
+.cake-container h2 {
+  margin-bottom: 20px;
+}
+
+/* Sabit başlık ve altbilgi */
+.App-header {
+  background-color: black;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.App-footer {
+  background-color: black;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.App-footer a {
   color: #61dafb;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-footer a:hover {
+  text-decoration: underline;
 }
